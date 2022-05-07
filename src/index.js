@@ -46,25 +46,64 @@ h3.innerHTML = `${hours}:${minutes}`;
 
 //current weather info
 
+//current weather info
+
 function showWeather(response) {
-  console.log(response.data);
-  let h1 = document.querySelector("h1");
-  h1.innerHTML = `${response.data.name}`;
-  let h4 = document.querySelector("h4");
-  let temperature = Math.round(response.data.main.temp);
-  h4.innerHTML = `${temperature}`;
+  document.querySelector("#place").innerHTML = response.data.name;
+  document.querySelector("#bigTemp").innerHTML = Math.round(
+    response.data.main.temp
+  );
+
+  document.querySelector("#humidity").innerHTML = response.data.main.humidity;
+  document.querySelector("#wind").innerHTML = Math.round(
+    response.data.wind.speed
+  );
+  document.querySelector("#description").innerHTML =
+    response.data.weather[0].main;
 }
 
 //searching for a city
 
-function findingPlace(event) {
-  event.preventDefault();
-  let apiKey = "5f472b7acba333cd8a035ea85a0d4d4c";
-  let input = document.querySelector("#search-input");
-  let city = `${input.value}`;
-  let url = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=imperial`;
-
-  axios.get(url).then(showWeather);
+function findingPlace(city) {
+  let apiKey = "4ea07c27d25d25e1861d7e9cc4008ce7";
+  let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=imperial`;
+  axios.get(apiUrl).then(showWeather);
 }
-let search = document.querySelector("#search-form");
-search.addEventListener("submit", findingPlace);
+
+function handleSubmit(event) {
+  event.preventDefault();
+  let city = document.querySelector("#search-form").value;
+  findingPlace(city);
+}
+
+function searchLocation(position) {
+  let apiKey = "4ea07c27d25d25e1861d7e9cc4008ce7";
+  let apiUrl = `https://api.openweathermap.org/data/2.5/weather?lat=${position.coords.latitude}&lon=${position.coords.longitude}&appid=${apiKey}&units=metric`;
+
+  axios.get(apiUrl).then(showWeather);
+}
+
+function getCurrentLocation(event) {
+  event.preventDefault();
+  navigator.geolocation.getCurrentPosition(searchLocation);
+}
+
+function convertToFahrenheit(event) {
+  event.preventDefault();
+  let temperatureElement = document.querySelector("#bigTemp");
+  temperatureElement.innerHTML = 66;
+}
+
+function convertToCelsius(event) {
+  event.preventDefault();
+  let temperatureElement = document.querySelector("#bigTemp");
+  temperatureElement.innerHTML = 19;
+}
+
+let searchForm = document.querySelector("#search-form");
+searchForm.addEventListener("submit", handleSubmit);
+
+let currentLocationButton = document.querySelector("#current-place");
+currentLocationButton.addEventListener("click", getCurrentLocation);
+
+findingPlace("New York");
