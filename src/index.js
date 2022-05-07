@@ -50,7 +50,7 @@ function showWeather(response) {
   console.log(response.data);
   let h1 = document.querySelector("h1");
   h1.innerHTML = `${response.data.name}`;
-  let h4 = document.querySelector("#h4");
+  let h4 = document.querySelector("h4");
   let temperature = Math.round(response.data.main.temp);
   h4.innerHTML = `${temperature}`;
 }
