@@ -12,17 +12,43 @@ body {
 }
 #search-form {
   display: inline;
-  position: relative;
 }
 #search-input {
   text-align: center;
   padding-left: 10px;
+  border-radius: 30px;
+  border-color: transparent;
+  box-shadow: 2px 2px 2px gray;
+  font-size: 20px;
+  width: 200px;
 }
-#place {
-  text-align: center;
-  display: inline;
+#searchButton {
+  border-radius: 30px;
+  border-color: transparent;
+  box-shadow: 2px 2px 2px gray;
+  background-color: rgb(57, 240, 185);
+  font-size: 18px;
 }
-#current-stats {
+#searchButton:hover {
+  background-color: blue;
+  color: white;
+}
+#current-place {
+  position: relative;
+  left: 46%;
+  border-radius: 30px;
+  background-color: rgb(57, 240, 185);
+  border-color: transparent;
+  font-size: 18px;
+  font-weight: bold;
+  box-shadow: 2px 2px 2px gray;
+}
+#current-place:hover {
+  background-color: blue;
+  color: white;
+}
+h5 {
+  border: 5px solid rgb(57, 240, 185);
   background: deepskyblue;
   width: 150px;
   height: 150px;
@@ -36,18 +62,15 @@ body {
   margin-right: 20px;
 }
 #place {
-  display: inline-flex;
-  align-items: center;
   text-align: center;
   color: white;
   font-size: 60px;
-  margin-left: 10px;
-  margin-right: 20px;
-  position: relative;
+  margin-left: 25%;
+  margin-right: 25%;
 }
-h1 {
-  display: inline;
-  padding-left: 60px;
+#bigTemp {
+  font-size: 40px;
+  font-weight: bold;
 }
 h2 {
   text-align: center;
