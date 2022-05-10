@@ -3,7 +3,7 @@ body {
   border-radius: 20px 20px 20px 20px;
   margin: 80px;
   color: whitesmoke;
-  background-image: url("images/noaa-UJsUJr3cgEM-unsplash.jpg");
+  background-image: url("../images/noaa-UJsUJr3cgEM-unsplash.jpg");
   font-family: "Amatic SC", cursive;
 }
 .container {
