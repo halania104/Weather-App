@@ -72,7 +72,7 @@ function findingPlace(city) {
 
 function handleSubmit(event) {
   event.preventDefault();
-  let city = document.querySelector("#search-form").value;
+  let city = document.querySelector("#search-input").value;
   findingPlace(city);
 }
 
