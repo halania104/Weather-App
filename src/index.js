@@ -46,8 +46,6 @@ h3.innerHTML = `${hours}:${minutes}`;
 
 //current weather info
 
-//current weather info
-
 function showWeather(response) {
   document.querySelector("#place").innerHTML = response.data.name;
   document.querySelector("#bigTemp").innerHTML = Math.round(
@@ -60,6 +58,12 @@ function showWeather(response) {
   );
   document.querySelector("#description").innerHTML =
     response.data.weather[0].main;
+  let iconElement = document.querySelector("#icon");
+  iconElement.setAttribute(
+    "src",
+    `http://openweathermap.org/img/wn/${response.data.weather[0].icon}@2x.png`
+  );
+  iconElement.setAttribute("alt", response.data.weather[0].description);
 }
 
 //searching for a city
