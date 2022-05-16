@@ -52,6 +52,8 @@ function showWeather(response) {
     response.data.main.temp
   );
 
+  fahrenheitTemp = response.data.main.temp;
+
   document.querySelector("#humidity").innerHTML = response.data.main.humidity;
   document.querySelector("#wind").innerHTML = Math.round(
     response.data.wind.speed
@@ -104,10 +106,23 @@ function convertToCelsius(event) {
   temperatureElement.innerHTML = 19;
 }
 
-let searchForm = document.querySelector("#search-form");
-searchForm.addEventListener("submit", handleSubmit);
+function showCelsiusTemp(event) {
+  event.preventDefault();
+  let celsiuTemp = ((fahrenheitTemp - 32) * 5) / 9;
+  alert(celsiuTemp);
+  let temperatureElement = document.querySelector("#bigtemp");
+  temperatureElement.innerHTML = Math.round(celsiuTemp);
+}
+
+let fahrenheitTemp = null;
 
 let currentLocationButton = document.querySelector("#current-place");
 currentLocationButton.addEventListener("click", getCurrentLocation);
+
+let searchForm = document.querySelector("#search-form");
+searchForm.addEventListener("submit", handleSubmit);
+
+let celsiusLink = document.querySelector("#celsius-link");
+celsiusLink.addEventListener("click", showCelsiusTemp);
 
 findingPlace("New York");
