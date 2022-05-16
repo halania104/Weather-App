@@ -114,6 +114,12 @@ function showCelsiusTemp(event) {
   temperatureElement.innerHTML = Math.round(celsiuTemp);
 }
 
+function showFahrenTemp(event) {
+  event.preventDefault();
+  let temperatureElement = document.querySelector("#bigtemp");
+  temperatureElement = Math.round(fahrenTemp);
+}
+
 let fahrenheitTemp = null;
 
 let currentLocationButton = document.querySelector("#current-place");
@@ -125,4 +131,6 @@ searchForm.addEventListener("submit", handleSubmit);
 let celsiusLink = document.querySelector("#celsius-link");
 celsiusLink.addEventListener("click", showCelsiusTemp);
 
+let fahrenheitLink = document.querySelector("#fahrenheit-link");
+fahrenheitLink.addEventListener("click", showFahrenTemp);
 findingPlace("New York");
