@@ -68,8 +68,8 @@ h5 {
   margin-left: 25%;
   margin-right: 25%;
 }
-#bigTemp {
-  font-size: 80px;
+h4 {
+  font-size: 70px;
   font-weight: bold;
   text-align: right;
 }
