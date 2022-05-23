@@ -45,20 +45,24 @@ let h3 = document.querySelector("h3");
 h3.innerHTML = `${hours}:${minutes}`;
 
 //forecast info
-function displayForecast() {
+function displayForecast(response) {
+  let forecast = response.data.daily;
+
   let forecastElement = document.querySelector("#forecast");
 
   let forecastHTML = `<div class="row">`;
-  let forecastDays = ["Thur", "Fri", "Sat", "Sun"];
-  forecastDays.forEach(function (day) {
+  forecast.forEach(function (forecastDay) {
     forecastHTML = forecastHTML +
       `
         <div class="col-2">
-            <div class="weather-forecast-date">${day}</div>
-            <img src="http://openweathermap.org/img/wn/50d@2x.png" alt="" width="42" />
+            <div class="weather-forecast-date">${forecastDay.dt}</div>
+            <img src="http://openweathermap.org/img/wn/${forecastDay.weather[0].icon}@2x.png" 
+            alt="" 
+            width="42" 
+            />
             <div class="weather-forecast-temp">
-            <span class="weather-forecast-temp-max">63°</span>
-            <span class="weather-forecast-temp-min">45°</span>
+            <span class="weather-forecast-temp-max"> ${forecastDay.temp.max}°</span>
+            <span class="weather-forecast-temp-min"> ${forecastDay.temp.min}°</span>
         </div>
       </div>
     </div>
@@ -72,7 +76,8 @@ console.log(forecastHTML);
 function getForecast(coordinates) {
   console.log(coordinates);
   let apiKey = "4ea07c27d25d25e1861d7e9cc4008ce7";
-  let apiUrl = `https://api.openweathermap.org/data/3.0/onecall?lat=${coordinates.lat}&lon=${coordinates.lon}&appid={4ea07c27d25d25e1861d7e9cc4008ce7}`
+  let apiUrl = `https://api.openweathermap.org/data/3.0/onecall?lat=${coordinates.lat}&lon=${coordinates.lon}&appid={apiKey}&units=imperial`;
+axios.get(apiUrl).then(displayForecast);
 }
 
 //current weather info
@@ -169,4 +174,3 @@ let fahrenheitLink = document.querySelector("#fahrenheit-link");
 fahrenheitLink.addEventListener("click", showFahrenTemp);
 
 findingPlace("New York");
-displayForecast();
