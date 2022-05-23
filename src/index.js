@@ -51,33 +51,34 @@ function displayForecast(response) {
   let forecastElement = document.querySelector("#forecast");
 
   let forecastHTML = `<div class="row">`;
+  let forecastDays = ["Thur", "Fri", "Sat", "Sun"];
   forecast.forEach(function (forecastDay) {
-    forecastHTML = forecastHTML +
+    forecastHTML =
+      forecastHTML +
       `
         <div class="col-2">
             <div class="weather-forecast-date">${forecastDay.dt}</div>
             <img src="http://openweathermap.org/img/wn/${forecastDay.weather[0].icon}@2x.png" 
             alt="" 
-            width="42" 
-            />
+            width="42" />
             <div class="weather-forecast-temp">
-            <span class="weather-forecast-temp-max"> ${forecastDay.temp.max}°</span>
-            <span class="weather-forecast-temp-min"> ${forecastDay.temp.min}°</span>
+            <span class="weather-forecast-temp-max">${forecastDay.temp.max}°</span>
+            <span class="weather-forecast-temp-min">${forecastDay.temp.min}°</span>
         </div>
       </div>
     </div>
     `;
   });
 
-forecastHTML = forecastHTML + `</div>`;
-forecastElement.innerHTML = forecastHTML;
-console.log(forecastHTML);
+  forecastHTML = forecastHTML + `</div>`;
+  forecastElement.innerHTML = forecastHTML;
+}
 
 function getForecast(coordinates) {
   console.log(coordinates);
   let apiKey = "4ea07c27d25d25e1861d7e9cc4008ce7";
-  let apiUrl = `https://api.openweathermap.org/data/3.0/onecall?lat=${coordinates.lat}&lon=${coordinates.lon}&appid={apiKey}&units=imperial`;
-axios.get(apiUrl).then(displayForecast);
+  let apiUrl = `https://api.openweathermap.org/data/3.0/onecall?lat=${coordinates.lat}&lon=${coordinates.lon}&appid={4ea07c27d25d25e1861d7e9cc4008ce7}`;
+  axios.get(apiUrl).then(displayForecast);
 }
 
 //current weather info
@@ -103,8 +104,7 @@ function showWeather(response) {
   );
   iconElement.setAttribute("alt", response.data.weather[0].description);
 
-
-getForecast(response.data.coords)
+  getForecast(response.data.coords);
 }
 
 //searching for a city
@@ -148,15 +148,14 @@ function convertToCelsius(event) {
 function showCelsiusTemp(event) {
   event.preventDefault();
   let celsiuTemp = ((fahrenheitTemp - 32) * 5) / 9;
-  alert(celsiuTemp);
-  let temperatureElement = document.querySelector("#bigtemp");
+  let temperatureElement = document.querySelector("#bigTemp");
   temperatureElement.innerHTML = Math.round(celsiuTemp);
 }
 
 function showFahrenTemp(event) {
   event.preventDefault();
-  let temperatureElement = document.querySelector("#bigtemp");
-  temperatureElement = Math.round(fahrenTemp);
+  let temperatureElement = document.querySelector("#bigTemp");
+  temperatureElement.innerHTML = Math.round(fahrenheitTemp);
 }
 
 let fahrenheitTemp = null;
