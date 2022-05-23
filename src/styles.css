@@ -78,30 +78,34 @@ h2 {
   line-height: 50px;
   font-size: 40px;
 }
-.future {
-  font-size: 50px;
-  font-weight: 700;
-  color: white;
-  padding-bottom: 20px;
-  padding-left: 20px;
-  text-align: center;
-}
+
 p {
   border: solid rgb(57, 240, 185);
   text-align: center;
   background-color: aqua;
 }
-.monday,
-.tuesday,
-.wednesday,
-.thursday,
-.friday {
-  color: lightskyblue;
+.weather-forecast {
+  margin-top: 20px;
+  text-align: center;
+  font-weight: 700;
+  color: white;
+  padding-bottom: 20px;
+  padding-left: 20px;
+}
+.weather-forecast-date {
   font-size: 30px;
+  color: lightskyblue;
   font-weight: 900;
   padding-left: 20%;
   text-align: left;
 }
+.weather-forecast-temp {
+  font-size: 27px;
+}
+.weather-forecast-temp-min {
+  opacity: 0.5;
+}
+
 .info {
   color: lightblue;
   font-weight: 300;

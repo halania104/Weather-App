@@ -44,6 +44,40 @@ h2.innerHTML = `${day} :  ${month}, ${date},${year}`;
 let h3 = document.querySelector("h3");
 h3.innerHTML = `${hours}:${minutes}`;
 
+//forecast info
+function displayForecast() {
+  let forecastElement = document.querySelector("#forecast");
+
+  let forecastHTML = `<div class="row">`;
+  let forecastDays = ["Mon", "Tues", "Wed", "Thur", "Fri", "Sat", "Sun"];
+  forecastDays.forEach(function (day) {
+    forecast =
+      forecastHTML +
+      `
+        <div class="col-2">
+            <div class="weather-forecast-date">${day}</div>
+            <img src="http://openweathermap.org/img/wn/50d@2x.png" alt="" width="42" />
+            <div class="weather-forecast-temp"><span class="weather-forecast-temp-max">63°</span>
+            <span class="weather-forecast-temp-min">45°</span>
+        </div>
+      </div>
+    </div>
+    `;
+  });
+  forecast =
+    forecastHTML +
+    `
+        <div class="col-2">
+            <div class="weather-forecast-date">Thursday</div>
+            <img src="http://openweathermap.org/img/wn/50d@2x.png" alt="" width="42" />
+            <div class="weather-forecast-temp"><span class="weather-forecast-temp-max">63°</span>
+            <span class="weather-forecast-temp-min">45°</span>
+        </div>
+      </div>
+    </div>
+    `;
+}
+
 //current weather info
 
 function showWeather(response) {
@@ -133,4 +167,6 @@ celsiusLink.addEventListener("click", showCelsiusTemp);
 
 let fahrenheitLink = document.querySelector("#fahrenheit-link");
 fahrenheitLink.addEventListener("click", showFahrenTemp);
+
 findingPlace("New York");
+displayForecast();
