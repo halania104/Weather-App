@@ -69,6 +69,12 @@ forecastHTML = forecastHTML + `</div>`;
 forecastElement.innerHTML = forecastHTML;
 console.log(forecastHTML);
 
+function getForecast(coordinates) {
+  console.log(coordinates);
+  let apiKey = "4ea07c27d25d25e1861d7e9cc4008ce7";
+  let apiUrl = `https://api.openweathermap.org/data/3.0/onecall?lat=${coordinates.lat}&lon=${coordinates.lon}&appid={4ea07c27d25d25e1861d7e9cc4008ce7}`
+}
+
 //current weather info
 
 function showWeather(response) {
@@ -91,6 +97,9 @@ function showWeather(response) {
     `http://openweathermap.org/img/wn/${response.data.weather[0].icon}@2x.png`
   );
   iconElement.setAttribute("alt", response.data.weather[0].description);
+
+
+getForecast(response.data.coords)
 }
 
 //searching for a city
