@@ -45,6 +45,14 @@ let h3 = document.querySelector("h3");
 h3.innerHTML = `${hours}:${minutes}`;
 
 //forecast info
+
+function formatDay(timestamp) {
+  let date = new Date(timestamp * 1000);
+  let day = date.getDay();
+  let days = ["Sun", "Mon", "Tue", "Wed", "Thur", "Fri", "Sat"];
+  return day[days];
+}
+
 function displayForecast(response) {
   let forecast = response.data.daily;
 
@@ -57,13 +65,21 @@ function displayForecast(response) {
       forecastHTML +
       `
         <div class="col-2">
-            <div class="weather-forecast-date">${forecastDay.dt}</div>
-            <img src="http://openweathermap.org/img/wn/${forecastDay.weather[0].icon}@2x.png" 
+            <div class="weather-forecast-date">${formatDay(
+              forecastDay.dt
+            )}</div>
+            <img src="http://openweathermap.org/img/wn/${
+              forecastDay.weather[0].icon
+            }@2x.png" 
             alt="" 
             width="42" />
             <div class="weather-forecast-temp">
-            <span class="weather-forecast-temp-max">${forecastDay.temp.max}°</span>
-            <span class="weather-forecast-temp-min">${forecastDay.temp.min}°</span>
+            <span class="weather-forecast-temp-max">${
+              forecastDay.temp.max
+            }°</span>
+            <span class="weather-forecast-temp-min">${
+              forecastDay.temp.min
+            }°</span>
         </div>
       </div>
     </div>
@@ -77,7 +93,7 @@ function displayForecast(response) {
 function getForecast(coordinates) {
   console.log(coordinates);
   let apiKey = "4ea07c27d25d25e1861d7e9cc4008ce7";
-  let apiUrl = `https://api.openweathermap.org/data/3.0/onecall?lat=${coordinates.lat}&lon=${coordinates.lon}&appid={4ea07c27d25d25e1861d7e9cc4008ce7}`;
+  let apiUrl = `https://api.openweathermap.org/data/2.5/onecall?lat=${coordinates.lat}&lon=${coordinates.lon}&appid=${apiKey}&units=imperial`;
   axios.get(apiUrl).then(displayForecast);
 }
 
@@ -104,7 +120,7 @@ function showWeather(response) {
   );
   iconElement.setAttribute("alt", response.data.weather[0].description);
 
-  getForecast(response.data.coords);
+  getForecast(response.data.coord);
 }
 
 //searching for a city
