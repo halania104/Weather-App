@@ -82,7 +82,6 @@ function displayForecast(response) {
               forecastDay.temp.min
             )}°</span>
         </div>
-      </div>
     </div>
     `;
     }
