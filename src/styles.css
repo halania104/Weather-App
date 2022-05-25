@@ -140,4 +140,5 @@ footer {
 }
 .gitlink {
   color: rgb(57, 240, 185);
+  text-decoration: none;
 }
