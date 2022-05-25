@@ -106,7 +106,7 @@ p {
   color: white;
   padding-bottom: 20px;
   padding-left: 20px;
-  font-size: 35px;
+  font-size: 40px;
 }
 .weather-forecast-date {
   font-size: 40px;
@@ -116,11 +116,12 @@ p {
   text-align: left;
 }
 .weather-forecast-temp {
-  font-size: 27px;
+  font-size: 30px;
 }
 .weather-forecast-temp-min {
   opacity: 0.5;
   color: rgb(57, 240, 185);
+  font-size: 30px;
 }
 
 .info {
