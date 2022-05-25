@@ -1,5 +1,5 @@
 body {
-  border: 4mm ridge rgba(50, 154, 240, 0.6);
+  border: 4mm ridge rgb(242, 248, 255);
   border-radius: 20px 20px 20px 20px;
   margin: 80px;
   color: whitesmoke;
@@ -9,7 +9,7 @@ body {
   font-family: "Amatic SC", cursive;
 }
 .container {
-  background-color: #1c305a;
+  background-color: #5d89e7f3;
   opacity: 80%;
 }
 #search-form {
