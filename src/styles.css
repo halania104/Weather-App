@@ -109,7 +109,7 @@ p {
 }
 .weather-forecast-date {
   font-size: 30px;
-  color: lightskyblue;
+  color: rgb(241, 243, 244);
   font-weight: 900;
   padding-left: 20%;
   text-align: left;
@@ -119,6 +119,7 @@ p {
 }
 .weather-forecast-temp-min {
   opacity: 0.5;
+  color: rgb(57, 240, 185);
 }
 
 .info {
