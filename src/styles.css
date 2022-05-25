@@ -37,7 +37,7 @@ body {
 }
 #current-place {
   position: relative;
-  left: 46%;
+  left: 50%;
   border-radius: 30px;
   background-color: rgb(57, 240, 185);
   border-color: transparent;
@@ -74,7 +74,7 @@ h5 {
 h4 {
   font-size: 70px;
   font-weight: bold;
-  text-align: right;
+  text-align: center;
 }
 #units .active {
   color: white;
@@ -88,7 +88,10 @@ h2 {
   line-height: 50px;
   font-size: 40px;
 }
-
+h3 {
+  font-size: 40px;
+  text-align: center;
+}
 p {
   border: solid rgb(57, 240, 185);
   text-align: center;
